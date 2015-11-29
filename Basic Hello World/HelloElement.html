@@ -1,0 +1,27 @@
+<html>
+<head>
+	<script src="http://fb.me/react-0.10.0.js"></script>
+	<script src="http://fb.me/JSXTransformer-0.10.0.js"></script>
+</head>
+<body>
+	<div id="container">
+	</div>
+	<script type = "text/jsx">
+		/** 
+		*	@jsx React.DOM
+		*/
+		var HelloElem =  React.createClass({
+			
+			getInitialState : function(){
+				return {name : 'Sumit'};
+			},
+			
+			render : function() {
+				return (<div id="hello-elem"> Hello from geeky {this.state.name} </div>);
+			}
+		});
+
+		React.renderComponent(<HelloElem />, document.getElementById('container'));
+	</script>
+</body>
+</html>
