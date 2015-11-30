@@ -1,0 +1,74 @@
+<html>
+<head>
+	<script src="http://fb.me/react-0.10.0.js"></script>
+	<script src="http://fb.me/JSXTransformer-0.10.0.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+	<style type "text/css">
+	*{
+		margin: 0;
+		padding:0;
+		box-sizing:border-box;
+	}
+	#user-div {
+		width:100%;
+		margin:100px auto;
+		text-align: center;
+
+	}
+	#user-name {
+		border : 1px solid #0000FF;
+		width : 250px;
+		height : 50px;
+		margin-bottom: 1em;
+	}
+	#update-button { 
+		width: 10em;  
+		height: 2em;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+	</div>
+
+	<script type = "text/jsx">
+		/** 
+		*	@jsx React.DOM
+		*/
+		var InputElem = React.createClass({
+			
+			getInitialState : function(){
+				return { 
+					name : null
+				}
+			},
+			
+			handleClickOnButton : function(){
+				debugger;
+				var value = $('#user-name').val();
+				this.setState({
+					name : value
+				});
+			},
+
+			render : function(){
+				return 	<div id="user-div">
+								<input id="user-name" type = "text" defaultValue="Enter Your Name here!!"/>
+								<br/>
+					   			<button id = "update-button" onClick = {this.handleClickOnButton}> Press Me </button>
+					   			<br/>
+					   			{ this.state.name ? <HelloElem name = {this.state.name} /> : null}
+					   	</div>;
+			}
+		});
+
+		var HelloElem = React.createClass({
+			render : function(){
+				return <div> Hello {this.props.name}</div>;
+			}
+		});
+
+		React.renderComponent(<InputElem />, document.getElementById('container'));
+	</script>
+</body>
+</html>
